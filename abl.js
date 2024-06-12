@@ -20,6 +20,7 @@ window.ABL_OBJECT=this;
 
 /* initialize */
 this.init=async function(){
+  /* remove all elements */
   let isUpdated=false;
   /* get data from database */
   this.data=this.database();
@@ -50,12 +51,8 @@ this.init=async function(){
   }
   /* start the app */
   if(typeof ABL_START==='string'){
-    document.addEventListener("DOMContentLoaded",e=>{
-      /* remove all elements */
-      this.removeAllElements();
-      /* load start script */
-      this.loadScript(ABL_START);
-    });
+    /* load start script */
+    this.loadScript(ABL_START);
   }
   /* perform silent-update */
   if(!isUpdated){
@@ -138,7 +135,6 @@ this.database=function(data){
 this.fetch=async function(url){
   url=typeof url==='string'?url:'';
   let response=await fetch(url),
-  _this=this,
   loaded=0,
   type='progress',
   total=parseInt(response.headers.get('content-length'),10),
@@ -148,14 +144,15 @@ this.fetch=async function(url){
       for(;;){
         let {done,value}=await reader.read();
         if(done){
-          _this.loader(false);
+          ABL_OBJECT.loader(false);
           break;
         }
         loaded+=value.byteLength;
-        _this.loader({loaded,total,type});
+        ABL_OBJECT.loader({loaded,total,type});
         controller.enqueue(value);
       }
       controller.close();
+      ABL_OBJECT.loader(false);
     },
   }));
   return await res.text();
