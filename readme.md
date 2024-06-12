@@ -3,14 +3,16 @@ app boot loader -- first handed loader
 
 
 # sample
+
+## html
 ```html
 <!DOCTYPE html><html lang="en-US" dir="ltr"><head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>9r3i\abl</title>
+  <title>9r3i\abl.js</title>
   <meta name="keywords" content="9r3i, abl, app" />
-  <meta name="description" content="ABL, https://github.com/9r3i/abl" />
+  <meta name="description" content="ABL, https://github.com/9r3i/abl.js" />
   <meta name="robots" content="no follow,no index" />
   <meta name="author" content="9r3i" />
   <meta name="uri" content="https://github.com/9r3i" />
@@ -36,11 +38,11 @@ app boot loader -- first handed loader
   loopLoader();
   /* prepare abl config namespace and host */
   const ABL_NS='test';
-  const ABL_HOST='https://raw.githubusercontent.com/9r3i/abl/master/test.app';
-  
+  const ABL_HOST='https://raw.githubusercontent.com/9r3i/abl.js/master/test.app';
+
   /* prepare registered files */
   const REGISTERED_FILES={
-    "abl.js": "https://raw.githubusercontent.com/9r3i/abl/master/abl.min.js",
+    "abl.js": "https://raw.githubusercontent.com/9r3i/abl.js/master/abl.min.js",
   };
   /* virtual host file */
   const VIRTUAL_HOST="https://raw.githubusercontent.com/9r3i/virtual.js/master/virtual.min.js";
