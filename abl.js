@@ -67,7 +67,7 @@ this.init=async function(){
 /* reset */
 this.reset=function(){
   this.database(false);
-  new ABL(this.app.name,this.app.host);
+  new abl(this.app.name,this.app.host);
 };
 /* silent update */
 this.silentUpdate=async function(){
