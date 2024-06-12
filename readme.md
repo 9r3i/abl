@@ -18,13 +18,22 @@ app boot loader -- first handed loader
 <script type="text/javascript">
   /* script */
 </script>
+<style type="text/css">
+  /* style */
+</style>
 </head><body>
+  <div class="index-splash" id="index-splash">
+  <span id="splash-text">Connecting...</span>
+  <progress id="splash-progress" max="100"></progress>
+  </div>
 </body></html>
 ```
 
+## script
 ```js
 /* anonymous async function */
 (async function(){
+  loopLoader();
   /* prepare abl config namespace and host */
   const ABL_NS='test',
   ABL_HOST='https://raw.githubusercontent.com/9r3i/abl/master/test.app';
@@ -63,4 +72,51 @@ app boot loader -- first handed loader
   await app.update(vname);
   /* end-of-script */
 })();
+/* loop loader */
+function loopLoader(){
+  let ll=document.getElementById('abl-loader'),
+  pp=document.getElementById('splash-progress'),
+  ss=document.getElementById('splash-text');
+  if(ll&&pp&&ss){
+    pp.value=parseInt(ll.style.width,10);
+    ss.innerText=ll.style.width+' Loading...';
+    if(pp.value>=100){return;}
+  }
+  return setTimeout(loopLoader,100);
+}
+```
+
+## style
+```css
+body{
+  margin:0px;
+  padding:0px;
+}
+.index-splash{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  width:100vw;
+  margin:0px;
+  padding:0px;
+  font-family:system-ui;
+  background-color:#fff;
+  background:linear-gradient(#fff 0%,#bdf 35%,#59d 100%);
+}
+.index-splash progress{
+  font-size:24px;
+}
+.index-splash span{
+  position:absolute;
+  margin:-35px 0px 0px;
+  font-size:13px;
+  color:#333;
+  animation:fade 2.3s infinite 0s;
+}
+@keyframes fade{
+  0%{opacity:1;}
+  50%{opacity:0.3;}
+  100%{opacity:1;}
+}
 ```
