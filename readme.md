@@ -35,8 +35,9 @@ app boot loader -- first handed loader
 (async function(){
   loopLoader();
   /* prepare abl config namespace and host */
-  const ABL_NS='test',
-  ABL_HOST='https://raw.githubusercontent.com/9r3i/abl/master/test.app';
+  const ABL_NS='test';
+  const ABL_HOST='https://raw.githubusercontent.com/9r3i/abl/master/test.app';
+  
   /* prepare registered files */
   const REGISTERED_FILES={
     "abl.js": "https://raw.githubusercontent.com/9r3i/abl/master/abl.min.js",
